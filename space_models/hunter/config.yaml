@@ -1,0 +1,153 @@
+seed: 2067537
+model: QRSPACE
+resume: true
+resume_ckpt: ''
+parallel: false
+device: cuda
+exp_name: hunter 
+logdir: ./space_models/hunter
+checkpointdir: ${logdir}/checkpoints
+evaldir: ${logdir}/eval
+demodir: ${logdir}/demo
+embedding_dir: ${logdir}/embedding
+dataset: custom-${exp_name}
+dir1: ./space_datasets
+dataset_roots:
+  custom-crafter: ${dir1}/crafter_rew0.7_step100000.h5
+  custom-hunter: ${dir1}/hunter_rew1.2_step100000.h5
+gamelist:
+- dodgeball
+train:
+  batch_size: 32
+  max_epochs: 1000
+  max_steps: 100000
+  num_workers: 4
+  clip_norm: 1.0
+  max_ckpt: 1
+  print_every: 500
+  save_every: 1000
+  eval_on: false
+  eval_every: 1000
+  solver:
+    fg:
+      optim: RMSprop
+      lr: 1.0e-05
+    bg:
+      optim: Adam
+      lr: 0.001
+eval:
+  checkpoint: best
+  metric: ap_avg
+show:
+  mode: val
+  show_embedding: true
+  indices:
+  - 0
+  - 1
+  - 2
+  - 3
+arch:
+  z_what_type: VAE
+  use_z_pres: false
+  num_cat: 4
+  M: 10
+  z_lambda: 0.1
+  glimpse_size: 16
+  z_what_dim: 16
+  img_shape:
+  - 64
+  - 64
+  G: 8
+  fg_sigma: 0.2
+  img_enc_dim_fg: 64
+  z_pres_dim: 1
+  z_depth_dim: 1
+  z_where_scale_dim: 2
+  z_where_shift_dim: 2
+  z_pres_start_step: 10000
+  z_pres_end_step: 15000
+  z_pres_start_value: 0.1
+  z_pres_end_value: 1.0e-10
+  z_scale_mean_start_step: 0
+  z_scale_mean_end_step: 20000
+  z_scale_mean_start_value: -2.0
+  z_scale_mean_end_value: -2.5
+  z_scale_std_value: 0.1
+  tau_start_step: 0
+  tau_end_step: 10000
+  tau_start_value: 2.5
+  tau_end_value: 1.0
+  boundary_loss: false
+  bl_off_step: 100000000
+  fix_alpha_steps: 0
+  fix_alpha_value: 0.1
+  K: 1
+  bg_sigma: 0.1
+  img_enc_dim_bg: 1
+  z_mask_dim: 1
+  z_comp_dim: 1
+  rnn_mask_hidden_dim: 2
+  rnn_mask_prior_hidden_dim: 2
+  predict_comp_hidden_dim: 2
+  z_what_tau: 1.0
+  no_bg_enc: true
+  freeze_kl_zwhat_step: 4000
+  seperate_z_cat_net_v2: true
+vqarch:
+  img_shape:
+  - 128
+  - 128
+  vq_K: 6
+  G: 8
+  fg_sigma: 0.15
+  glimpse_size: 32
+  img_enc_dim_fg: 128
+  z_pres_dim: 1
+  z_depth_dim: 1
+  z_where_scale_dim: 2
+  z_where_shift_dim: 2
+  z_what_dim: 32
+  z_pres_start_step: 4000
+  z_pres_end_step: 10000
+  z_pres_start_value: 0.1
+  z_pres_end_value: 0.01
+  z_scale_mean_start_step: 10000
+  z_scale_mean_end_step: 20000
+  z_scale_mean_start_value: -1.0
+  z_scale_mean_end_value: -2.0
+  z_scale_std_value: 0.1
+  tau_start_step: 0
+  tau_end_step: 10000
+  tau_start_value: 2.5
+  tau_end_value: 2.5
+  boundary_loss: true
+  bl_off_step: 100000000
+  fix_alpha_steps: 0
+  fix_alpha_value: 0.1
+  K: 5
+  bg_sigma: 0.15
+  img_enc_dim_bg: 64
+  z_mask_dim: 32
+  z_comp_dim: 32
+  rnn_mask_hidden_dim: 64
+  rnn_mask_prior_hidden_dim: 64
+  predict_comp_hidden_dim: 64
+eval_cfg:
+  train:
+    metrics:
+    - mse
+    - ap
+    num_samples:
+      mse: 200
+      ap: 200
+    batch_size: 12
+    num_workers: 4
+  test:
+    batch_size: 12
+    num_workers: 4
+num_cat: 4
+use_z_pres: true
+glimpse_size: 16
+z_what_dim: 16
+bg_dim: 1
+balance_alpha: -1

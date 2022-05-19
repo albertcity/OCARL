@@ -1,0 +1,53 @@
+| module                             | #parameters or shape   | #flops     |
+|:-----------------------------------|:-----------------------|:-----------|
+| m                                  | 1.728M                 | 0.394G     |
+|  img_encoder                       |  0.651M                |  72.495M   |
+|   img_encoder.enc                  |   0.428M               |   58.184M  |
+|    img_encoder.enc.0               |    0.448K              |    1.769M  |
+|    img_encoder.enc.2               |    32                  |    0.328M  |
+|    img_encoder.enc.3               |    8.224K              |    8.389M  |
+|    img_encoder.enc.5               |    64                  |    0.164M  |
+|    img_encoder.enc.6               |    32.832K             |    8.389M  |
+|    img_encoder.enc.8               |    0.128K              |    81.92K  |
+|    img_encoder.enc.9               |    73.856K             |    18.874M |
+|    img_encoder.enc.11              |    0.256K              |    0.164M  |
+|    img_encoder.enc.12              |    0.295M              |    18.874M |
+|    img_encoder.enc.14              |    0.512K              |    81.92K  |
+|    img_encoder.enc.15              |    16.448K             |    1.049M  |
+|    img_encoder.enc.17              |    0.128K              |    20.48K  |
+|   img_encoder.enc_lat              |   74.112K              |   4.76M    |
+|    img_encoder.enc_lat.0           |    36.928K             |    2.359M  |
+|    img_encoder.enc_lat.2           |    0.128K              |    20.48K  |
+|    img_encoder.enc_lat.3           |    36.928K             |    2.359M  |
+|    img_encoder.enc_lat.5           |    0.128K              |    20.48K  |
+|   img_encoder.enc_cat              |   0.148M               |   9.478M   |
+|    img_encoder.enc_cat.0           |    0.148M              |    9.437M  |
+|    img_encoder.enc_cat.2           |    0.256K              |    40.96K  |
+|   img_encoder.z_scale_net          |   0.516K               |   32.768K  |
+|    img_encoder.z_scale_net.weight  |    (4, 128, 1, 1)      |            |
+|    img_encoder.z_scale_net.bias    |    (4,)                |            |
+|   img_encoder.z_shift_net          |   0.516K               |   32.768K  |
+|    img_encoder.z_shift_net.weight  |    (4, 128, 1, 1)      |            |
+|    img_encoder.z_shift_net.bias    |    (4,)                |            |
+|   img_encoder.z_pres_net           |   0.129K               |   8.192K   |
+|    img_encoder.z_pres_net.weight   |    (1, 128, 1, 1)      |            |
+|    img_encoder.z_pres_net.bias     |    (1,)                |            |
+|   img_encoder.z_depth_net          |   0.258K               |            |
+|    img_encoder.z_depth_net.weight  |    (2, 128, 1, 1)      |            |
+|    img_encoder.z_depth_net.bias    |    (2,)                |            |
+|  z_what_net                        |  0.698M                |  0.321G    |
+|   z_what_net.enc_cnn               |   0.69M                |   0.321G   |
+|    z_what_net.enc_cnn.0            |    0.896K              |    14.156M |
+|    z_what_net.enc_cnn.2            |    64                  |    2.621M  |
+|    z_what_net.enc_cnn.3            |    32.832K             |    0.134G  |
+|    z_what_net.enc_cnn.5            |    0.128K              |    1.311M  |
+|    z_what_net.enc_cnn.6            |    0.131M              |    0.134G  |
+|    z_what_net.enc_cnn.8            |    0.256K              |    0.655M  |
+|    z_what_net.enc_cnn.9            |    0.525M              |    33.554M |
+|    z_what_net.enc_cnn.11           |    0.512K              |    81.92K  |
+|   z_what_net.enc_what              |   7.528K               |   0.459M   |
+|    z_what_net.enc_what.y_net       |    2.056K              |    0.131M  |
+|    z_what_net.enc_what.z_net       |    4.784K              |    0.303M  |
+|    z_what_net.enc_what.z_prior_net |    0.288K              |            |
+|    z_what_net.enc_what.out_net     |    0.4K                |    24.576K |
+
